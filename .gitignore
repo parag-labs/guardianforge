@@ -1,0 +1,12 @@
+# Go
+go/bin/
+*.exe
+*.test
+*.out
+
+# .NET
+csharp/**/bin/
+csharp/**/obj/
+
+# misc
+.DS_Store

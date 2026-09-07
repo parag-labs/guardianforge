@@ -1,0 +1,10 @@
+# Run the C# implementation: `docker compose -f deploy/docker-compose.csharp.yml up --build`
+# Uses the deterministic mock supervisor by default (no API key).
+services:
+  guardianforge-csharp:
+    build:
+      context: ../csharp
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_URLS: "http://0.0.0.0:8080"

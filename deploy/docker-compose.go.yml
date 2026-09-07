@@ -1,0 +1,13 @@
+# Run the Go implementation: `docker compose -f deploy/docker-compose.go.yml up --build`
+# Uses the deterministic mock supervisor by default (no API key). Set LLM_* to use a model.
+services:
+  guardianforge-go:
+    build:
+      context: ../go
+    ports:
+      - "8080:8080"
+    environment:
+      ADDR: ":8080"
+      # LLM_BASE_URL: "https://api.openai.com/v1"
+      # LLM_API_KEY: "sk-..."
+      # LLM_MODEL: "gpt-4o-mini"
