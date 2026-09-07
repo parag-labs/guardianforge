@@ -49,7 +49,7 @@ public static class PolicyMode
 /// <summary>Rule comparison operators.</summary>
 public static class Op
 {
-    public const string Equals = "eq";
+    public const string Eq = "eq";
     public const string NotEquals = "ne";
     public const string Contains = "contains";
     public const string Matches = "matches";

@@ -44,7 +44,7 @@ public class CoreTests
     [Fact]
     public void EqualityRuleFires()
     {
-        var p = new Policy { PolicyId = "p1", Mode = PolicyMode.Hard, Rules = { new Rule { RuleId = "r1", Field = "tool", Op = Op.Equals, Value = "delete_database", Severity = Severity.Critical } } };
+        var p = new Policy { PolicyId = "p1", Mode = PolicyMode.Hard, Rules = { new Rule { RuleId = "r1", Field = "tool", Op = Op.Eq, Value = "delete_database", Severity = Severity.Critical } } };
         var e = new PolicyEvaluator(new[] { p });
         var (v, mode, sev) = e.Evaluate(Ev("a1", EventType.ToolCall, "delete_database"));
         Assert.Single(v);
@@ -55,7 +55,7 @@ public class CoreTests
     [Fact]
     public void CleanEventNoViolation()
     {
-        var p = new Policy { PolicyId = "p1", Mode = PolicyMode.Hard, Rules = { new Rule { RuleId = "r1", Field = "tool", Op = Op.Equals, Value = "delete_database", Severity = Severity.Critical } } };
+        var p = new Policy { PolicyId = "p1", Mode = PolicyMode.Hard, Rules = { new Rule { RuleId = "r1", Field = "tool", Op = Op.Eq, Value = "delete_database", Severity = Severity.Critical } } };
         var e = new PolicyEvaluator(new[] { p });
         var (v, mode, _) = e.Evaluate(Ev("a1", EventType.ToolCall, "read_file"));
         Assert.Empty(v);

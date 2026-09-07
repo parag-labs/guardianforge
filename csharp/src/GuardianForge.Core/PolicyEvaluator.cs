@@ -92,7 +92,7 @@ public sealed class PolicyEvaluator
         var val = FieldValue(ev, r.Field);
         return r.Op switch
         {
-            Core.Op.Equals => val == r.Value,
+            Core.Op.Eq => val == r.Value,
             Core.Op.NotEquals => val != r.Value,
             Core.Op.Contains => val.Contains(r.Value, StringComparison.Ordinal),
             Core.Op.Matches => _regexps.TryGetValue(r.RuleId, out var rx) && rx.IsMatch(val),

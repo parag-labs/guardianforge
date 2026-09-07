@@ -80,7 +80,7 @@ public static class Scenarios
         new Policy
         {
             PolicyId = "destructive-tools", Name = "Block destructive tools", Version = "1", Mode = PolicyMode.Hard,
-            Rules = new() { new Rule { RuleId = "delete-db", Field = "tool", Op = Op.Equals, Value = "delete_database", Severity = Severity.Critical } },
+            Rules = new() { new Rule { RuleId = "delete-db", Field = "tool", Op = Op.Eq, Value = "delete_database", Severity = Severity.Critical } },
         },
         new Policy
         {
@@ -95,7 +95,7 @@ public static class Scenarios
         new Policy
         {
             PolicyId = "pii", Name = "Constrain PII leakage", Version = "1", Mode = PolicyMode.Soft,
-            Rules = new() { new Rule { RuleId = "pii-flag", Field = "metadata.pii", Op = Op.Equals, Value = "true", Severity = Severity.High } },
+            Rules = new() { new Rule { RuleId = "pii-flag", Field = "metadata.pii", Op = Op.Eq, Value = "true", Severity = Severity.High } },
         },
     };
 }
