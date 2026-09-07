@@ -36,7 +36,7 @@ design, agent roles, and acceptance criteria:
 | Version | Language | Status | Location |
 |---------|----------|--------|----------|
 | GuardianForge-Go | Go 1.24+ | ✅ complete, CI-green | [`go/`](go/) |
-| GuardianForge-C# | .NET 8+ | see [`csharp/`](csharp/) | [`csharp/`](csharp/) |
+| GuardianForge-C# | .NET 10 | see [`csharp/`](csharp/) | [`csharp/`](csharp/) |
 
 Each language folder is a fully independent, runnable system.
 

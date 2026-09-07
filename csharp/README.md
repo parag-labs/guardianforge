@@ -1,6 +1,6 @@
 # GuardianForge — C#
 
-The complete .NET 8 implementation of GuardianForge. It is a fully independent, runnable
+The complete .NET 10 implementation of GuardianForge. It is a fully independent, runnable
 system that mirrors the [Go version](../go/) and the shared [design](../DESIGN.md).
 
 ## Run it
