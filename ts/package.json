@@ -1,0 +1,17 @@
+{
+  "name": "guardianforge",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Deterministic governance core: policy evaluation, anomaly detection, trust scoring",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  }
+}

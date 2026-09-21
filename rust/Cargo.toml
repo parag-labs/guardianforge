@@ -1,0 +1,13 @@
+[package]
+name = "guardianforge-core"
+version = "0.1.0"
+edition = "2021"
+description = "Deterministic governance core of GuardianForge (Rust port)."
+license = "MIT"
+
+[lib]
+name = "guardianforge"
+path = "src/lib.rs"
+
+[dependencies]
+regex = "1"

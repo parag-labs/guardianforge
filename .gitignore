@@ -10,3 +10,20 @@ csharp/**/obj/
 
 # misc
 .DS_Store
+
+# Python
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+
+# Rust
+rust/target/
+rust/Cargo.lock
+
+# Node / TypeScript
+node_modules/
+
+# Java
+java/target/
+*.class

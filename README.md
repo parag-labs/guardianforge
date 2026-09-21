@@ -1,6 +1,6 @@
 <h1 align="center">GuardianForge</h1>
 
-<p align="center"><strong>Runtime governance for multi-agent AI systems — in Go and C#</strong></p>
+<p align="center"><strong>Runtime governance for multi-agent AI systems — full systems in Go and C#, deterministic core in six languages</strong></p>
 
 <p align="center">A supervisory layer that watches other AI agent fleets, detects policy violations,
 anomalous behaviour, and trust decay, and intervenes — observe, constrain, block, or
@@ -28,10 +28,10 @@ all deterministic Go/C#. The supervisor agent (the one LLM step) proposes a deci
 validator rejects anything it isn't allowed to do — a hallucinated intervention type, or an
 attempt to intervene under an observe-only policy — failing safe to a human.
 
-## Two implementations
+## Two full systems, six language cores
 
-GuardianForge is implemented **fully and independently in two languages**, sharing the same
-design, agent roles, and acceptance criteria:
+GuardianForge ships as **two complete, independently runnable systems** — Go and C# — that
+share the same design, agent roles, and acceptance criteria:
 
 | Version | Language | Status | Location |
 |---------|----------|--------|----------|
@@ -39,6 +39,33 @@ design, agent roles, and acceptance criteria:
 | GuardianForge-C# | .NET 10 | see [`csharp/`](csharp/) | [`csharp/`](csharp/) |
 
 Each language folder is a fully independent, runnable system.
+
+On top of those, the **deterministic decision core** — the part that runs before any model
+is consulted — is additionally ported to Python, Rust, Java, and TypeScript, so the
+governance logic can be embedded wherever an agent runs:
+
+| Language | Tests | Run |
+|----------|:-----:|-----|
+| Go (full system) | see `go/` | `cd go && go test ./...` |
+| C# (full system) | 29 | `cd csharp && dotnet test` |
+| Python | 52 | `cd python && PYTHONPATH=src pytest -q` |
+| Rust | 49 | `cd rust && cargo test` |
+| Java (17+) | 51 | `cd java && mvn test` |
+| TypeScript | 52 | `cd ts && npm test` |
+
+The ported core covers **policy evaluation**, **anomaly detection**, **trust scoring**, and
+the **evaluation scorecard** — the four modules that are pure arithmetic and state
+transitions. The LLM supervisor, the HTTP API, the fleet simulator, and the audit-chain
+storage deliberately stay in Go and C#: they are I/O and model integration, not portable
+decision logic.
+
+Two behaviours are pinned identically across every port, because they are easy to get
+wrong: the anomaly score uses Go's `float64(int(f*100+0.5))/100` **round-half-up**, while
+the evaluation scorecard uses Go's `%.0f` **round-half-to-even** (so 12.5% renders as
+`12%`, not `13%`). The policy engine also accepts Python/Go inline regexp flags such as
+`(?i)`; since JavaScript's `RegExp` cannot parse that syntax, the TypeScript port maps a
+leading inline-flag group onto native flags rather than silently failing to compile the
+rule.
 
 ## The governance loop
 
