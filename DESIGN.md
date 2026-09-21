@@ -4,6 +4,11 @@ Why GuardianForge is built the way it is, the trade-offs taken on purpose, and w
 deliberately is **not**. This applies to both the Go and C# implementations, which share
 the same design and acceptance criteria.
 
+![architecture](docs/diagrams/architecture.png)
+
+*The whole system on one page — deterministic detectors, the single model step, the validator
+that gates it, and the hash-chained audit. Source: [`docs/diagrams/architecture.svg`](docs/diagrams/architecture.svg).*
+
 ## The one rule
 
 > Deterministic code detects, decides the enforcement envelope, and executes. The model
