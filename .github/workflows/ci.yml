@@ -1,4 +1,4 @@
-name: CI (6 languages)
+name: Continuous integration (6 languages)
 
 on:
   push:
